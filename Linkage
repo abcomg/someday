@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<form action="" method="post">
+			省：<select name="province"></select> 市：
+			<select name="city"></select> 区：
+			<select name="area"></select>
+		</form>
+	</body>
+
+</html>
+<script type="text/javascript">
+	var data = [
+		['620000', '甘肃省'],
+		['610000', '陕西省'],
+		['140000', '山西省'],
+		['510000', '四川省'],
+		['610100', '西安市'],
+		['610200', '渭南市'],
+		['610300', '咸阳市'],
+		['610101', '莲湖区'],
+		['610201', '雁塔区'],
+		['610301', '碑林区']
+	]
+
+	/*var data = [
+		{'陕西省': [
+			{'西安市':['碑林区','澎湖区','雁塔区']},
+			{'西安市':['碑林区','澎湖区','雁塔区']},
+			{'西安市':['碑林区','澎湖区','雁塔区']}
+		]}
+	]*/
+
+	/*data = []
+	data.push({'陕西省':[]})
+	data.push({'山西省':[]})
+	data[0].陕西省.push('西安市')*/
+
+	var p = document.forms[0].province
+	var c = document.forms[0].city
+	var a = document.forms[0].area
+	p.add(new Option('请选择'))
+	c.add(new Option('请选择'))
+	a.add(new Option('请选择'))
+	for (var i = 0; i < data.length; i++) {
+		if (data[i][0].slice(-4) == '0000') {
+			p.add(new Option(data[i][1], data[i][0]))
+		}
+	}
+	p.onchange = function() {
+		c.length = 1
+		a.length = 1
+		if (this.value != '') {
+			var $tmp = this.value.slice(0, 2)
+			for (var i = 0; i < data.length; i++) {
+				if (data[i][0].slice(0, 2) == $tmp && data[i][0].slice(2, 4) !== '00' && data[i][0].slice(4) == '00') {
+					c.add(new Option(data[i][1], data[i][0]))
+				}
+			}
+		}
+	}
+	c.onchange = function() {
+		a.length = 1
+		if (this.value != '') {
+			var $tmp = this.value.slice(0, 4)
+			for (var i = 0; i < data.length; i++) {
+				if (data[i][0].slice(0, 4) == $tmp && data[i][0].slice(-2) != '00') {
+					a.add(new Option(data[i][1], data[i][0]))
+
+				}
+			}
+		}
+	}
+</script>

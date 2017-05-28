@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>倒计时</title>
+		<style type="text/css">
+	
+			.bxo{margin: 222px auto 0px;font-size: 56px;
+			width: 870px;}
+		</style>
+	</head>
+
+	<body>
+		<div class="bxo"></div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	var timer = null;
+	var bxo = document.querySelector('.bxo');
+vv()
+	function vv() {	
+		var time = new Date()
+		var b = Date.parse("2018/6/6")
+		var c = time.getTime()
+		var box = (b - c) / 1000
+		var aa = Math.floor(box % 60)
+		var bb = Math.floor(box / 60 % 60)
+		var cc = Math.floor(box / 3600 % 24)
+		var dd = Math.floor(box / 3600 / 24 % 30)
+		var tt = "距离高考还有" + dd + "天" + cc + "小时" + bb + "分钟" + aa + "秒"
+		bxo.innerHTML = tt	
+	}
+	setInterval(vv, 1000)
+</script>

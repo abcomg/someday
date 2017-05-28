@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box" style="width:50px;height:50px;background-color:red;position: fixed;left: 0px;top: 0px;"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	var box = document.getElementById("box")
+	var mouseX,mouseY;
+	var xx,yy;
+	var obj=true
+	box.onmousedown=function(){
+		var divX = parseFloat(this.style.left);
+        var divY = parseFloat(this.style.top);
+          xx = mouseX - divX;
+         yy = mouseY - divY;
+         obj=true
+	}
+	document.onmousemove = function (c) {
+		var e = c || event;
+		mouseX = c.clientX;
+        mouseY = c.clientY;
+         if(obj){
+            //动态设置方块的位置
+            box.style.left = mouseX - xx + "px";
+            box.style.top = mouseY - yy + "px";
+        }
+    }
+    document.onmouseup = function () {
+        obj = false;
+       }
+  
+</script>

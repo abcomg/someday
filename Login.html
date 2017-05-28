@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>用户注册</title>
+		<style type="text/css">
+			body {
+				background-image: url(img/8810056.jpg);
+			}
+			
+			#fie {
+				width: 400px;
+				margin: 200px auto 0;
+			}
+			
+			h3 {
+				text-align: center;
+				font: f0f0f0;
+			}
+		</style>
+	</head>
+  
+	<body>
+		<h3>尊敬的用户，请认真填写注册信息</h3>
+		<form action="" method="post">
+			<fieldset id="fie">
+				<legend>注册</legend>
+				用户名： <input type="text" id="uname" placeholder="请输入三到五位用户名" onkeyup="aa()" /> <span id="spa" class="dd"></span><br />
+        密&nbsp;&nbsp;码：<input type="password" id="pass" placeholder="请输入五到十六位密码" onkeyup="bb()" /> <span id="spa2" class="dd"></span><br />
+        手机号：<input type="text" id="phone" placeholder="请输入11位手机号" onkeyup="dd()" /> <span id="spa3" class="dd"></span><br />
+        邮&nbsp;&nbsp;箱：<input type="text" id="mi" placeholder="请输入电子邮箱账号" onkeyup="cc()" /> <span id="spa4" class="dd"></span> <br /><br />
+				<input type="reset" id="res" value="重置" />
+				<input type="button" id="sub" name="" value="提交" onclick="xx()">
+			</fieldset>
+		</form>
+	</body>
+</html>
+<script type="text/javascript">
+	function aa() {
+		var uname = document.getElementById("uname").value
+		var pattern = /^([\u4e00-\u9fa5]{3,5})$/gi;
+		var max = pattern.test(uname)
+		if (max == true) {
+			spa.innerHTML = "输入正确"
+			return true
+		} else {
+			spa.innerHTML = "格式错误，请重新输入"
+			return false
+		}
+	}
+
+	function bb() {
+		var pass = document.getElementById("pass").value
+		var pattern = /^([\w\-\.\@]{6,15})$/gi;
+		var max = pattern.test(pass)
+		if (max == true) {
+			spa2.innerHTML = "输入正确"
+			return true
+		} else {
+			spa2.innerHTML = "格式错误，请重新输入"
+			return false
+		}
+	}
+
+	function cc() {
+		var mi = document.getElementById("mi").value
+		var pattern = /^([\w\-\.]+)(\@)([\w]+)(\.[a-z]{2,5})+$/gi;
+		var max = pattern.test(mi)
+		if (max == true) {
+			spa4.innerHTML = "输入正确"
+			return true
+		} else {
+			spa4.innerHTML = "格式错误，请重新输入"
+			return false
+		}
+	}
+
+	function dd() {
+		var phone = document.getElementById("phone").value
+		var pattern = /^(13|15|18|17)([0-9]{9})$/gi;
+		var max = pattern.test(phone)
+		if (max == true) {
+			spa3.innerHTML = "输入正确"
+			return true
+		} else {
+			spa3.innerHTML = "格式错误，请重新输入"
+			return false
+		}
+	}
+
+	function xx() {
+		if (aa() == true && bb() == true && cc() == true && dd() == true) {
+			alert("提交成功")
+		} else {
+			alert("请核对信息是否正确")
+		}
+	}
+</script>
